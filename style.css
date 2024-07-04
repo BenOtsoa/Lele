@@ -1,0 +1,24 @@
+
+#red{
+  color: red;
+}
+#green{
+  color: green;
+}
+
+h1 {
+  font-style: italic;
+  text-transform: uppercase;
+  text-decoration: underline;
+}.button:hover {
+  background-color: #00a4f0;
+}
+#monBouton:hover {
+  background-color: #01c5f7;
+}
+#monImage {
+  display: none;
+}
+#toggleImage:checked + #monBouton + #monImage {
+  display: block;
+}
