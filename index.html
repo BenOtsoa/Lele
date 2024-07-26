@@ -33,6 +33,8 @@
 		<a href="#" onclick="openAppOrRedirect('geo:48.8566,2.3522?q=48.8566,2.3522(Paris)', 'https://www.google.com/maps?q=48.8566,2.3522'); return false;">
 			Ouvrir cette localisation
 		</a>
+		<h1>Ouvrir la Plusieurs type de devices</h1>
+    <button onclick="openMap()">Ouvrir cette localisation</button>
 		<script language="javascript">
 		function openAppOrRedirect(appUrl, webUrl) {
             var clickedAt = +new Date();
@@ -45,6 +47,20 @@
                     window.location = webUrl;
                 }
             }, 1000); // Un délai de 1 seconde est généralement suffisant
+        };
+		function openMap() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            if (/android/i.test(userAgent)) {
+                // Appareils Android
+                window.location.href = "geo:48.8566,2.3522?q=48.8566,2.3522(Paris)";
+            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                // Appareils iOS
+                window.location.href = "maps://maps.apple.com/?q=48.8566,2.3522";
+            } else {
+                // Fallback pour les navigateurs web
+                window.location.href = "https://www.google.com/maps?q=48.8566,2.3522";
+            }
         }
 		  </script>
 	</body>
