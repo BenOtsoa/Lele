@@ -29,6 +29,24 @@
 		<a href="https://www.google.com/maps?q=48.8566,2.3522" target="_blank" id="google-maps-link">
 			Ouvrir cette localisation sur Google Maps web?
 		</a>
+		<h1>Ouvrir la localisation test fallback</h1>
+		<a href="#" onclick="openAppOrRedirect('geo:48.8566,2.3522?q=48.8566,2.3522(Paris)', 'https://www.google.com/maps?q=48.8566,2.3522'); return false;">
+			Ouvrir cette localisation
+		</a>
+		<script language="javascript">
+		function openAppOrRedirect(appUrl, webUrl) {
+            var clickedAt = +new Date();
+            window.location = appUrl;
+
+            // Si l'application ne s'ouvre pas, l'utilisateur reste sur la page ou est redirigé
+            setTimeout(function() {
+                // Vérifie si le temps écoulé est très court, ce qui signifie que l'application n'a pas été ouverte
+                if (+new Date() - clickedAt < 1500) {
+                    window.location = webUrl;
+                }
+            }, 1000); // Un délai de 1 seconde est généralement suffisant
+        }
+		  </script>
 	</body>
 </html>
 <!-- 
